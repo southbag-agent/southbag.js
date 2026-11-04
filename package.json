@@ -1,0 +1,13 @@
+{
+  "name": "southbag.js",
+  "version": "0.1.0",
+  "description": "The script applied across all Southbag sites: Kevin capitalisation, Palantir analytics, and shared house behaviour.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.0"
+  }
+}
