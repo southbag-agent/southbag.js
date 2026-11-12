@@ -3,7 +3,7 @@
 The script applied across all Southbag sites. One tag gives a page the shared house behaviour:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SouthbagHQ/southbag.js@main/southbag.js"
+<script src="https://cdn.jsdelivr.net/gh/southbag-agent/southbag.js@main/southbag.js"
         data-app="banking"
         data-session-url="/api/session"></script>
 ```
@@ -13,7 +13,10 @@ The script applied across all Southbag sites. One tag gives a page the shared ho
 ### 1. Kevin is always written "Kevin"
 
 Anything typed into a text field or contenteditable region is corrected as it is typed
-(`kevin`, `KEVIN`, `kEvIn` → `Kevin`; `@kevin` → `@Kevin`), keeping the caret where it was.
+(`kevin`, `KEVIN`, `kEvIn` → `Kevin`), keeping the caret where it was and the native undo
+stack intact. Identifiers are data, not prose: email, URL and search inputs are never
+touched, and `kevin` inside an email address, URL, query string or handle
+(`kevin@x.com`, `x.com/kevin`, `?q=kevin`, `@kevin`) is left exactly as typed.
 The correction runs in the capture phase, before app and framework handlers read the value, so
 controlled inputs (Svelte, React, Vue) pick up `Kevin` without a second event.
 
@@ -53,11 +56,10 @@ existing PostHog instance and reuses it instead of initialising a second one.
 ### 3. Shared extras
 
 - `window.southbag` — `{ version, kevin: { fix(text) }, palantir }`.
-- A console banner. Kevin is watching.
 
 ## Opting out
 
-On the script tag: `data-no-kevin`, `data-no-analytics`, `data-no-banner`.
+On the script tag: `data-no-kevin`, `data-no-analytics`.
 Or before load:
 
 ```html
@@ -73,7 +75,7 @@ Per field or subtree: `data-southbag-no-kevin`.
 Until `js.southbag.cc` exists, the canonical URL is the jsDelivr mirror of this repo:
 
 ```
-https://cdn.jsdelivr.net/gh/SouthbagHQ/southbag.js@main/southbag.js
+https://cdn.jsdelivr.net/gh/southbag-agent/southbag.js@main/southbag.js
 ```
 
 Integrations pin an exact commit (`…/southbag.js@<sha>/southbag.js`) so a bad push can't

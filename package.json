@@ -1,6 +1,6 @@
 {
   "name": "southbag.js",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "description": "The script applied across all Southbag sites: Kevin capitalisation, Palantir analytics, and shared house behaviour.",
   "type": "module",
   "private": true,
